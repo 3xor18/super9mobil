@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{this.productService.filtrado}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Regresar"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- fab placed to the top end -->
+
+
+  <ion-grid >
+
+      <span *ngFor="let ipeli of ipelis">
+        <ion-card  size="12"  *ngIf="ipeli.categoria==this.productService.filtrado;" >
+        <ion-row>
+
+            <ion-col size=5>
+                 <img src="{{ipeli.image}}"  style="width:150px; height:150px;" size="5">
+            </ion-col>
+
+            <ion-col size="7">
+                <ion-col>
+                     <ion-card-subtitle  style="color: #43af35; font-size:17px"  slot="">{{ipeli.name}}</ion-card-subtitle>
+                </ion-col>
+                <ion-col>
+                     <ion-card-subtitle><strong> Descripcion:</strong>{{ipeli.description}}</ion-card-subtitle>
+                </ion-col>
+                 <ion-col>
+                     <ion-card-subtitle><strong> Contenido Neto:</strong>{{ipeli.weight}}</ion-card-subtitle>
+                </ion-col>
+
+            </ion-col>
+
+        </ion-row>
+    <ion-row>
+            <ion-col size="12" style="text-align: end" >
+              <ion-button  size="12" (click)="abrirmodal(ipeli.product_id,ipeli.name)">
+       Precio: {{ipeli.price}}
+      <ion-icon name="cart"></ion-icon>
+  </ion-button>
+            </ion-col>
+        </ion-row>
+
+        </ion-card>
+      </span>
+
+  </ion-grid>
+
+
+</ion-content>

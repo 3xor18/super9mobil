@@ -1,0 +1,20 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title text-capitalize="">{{nombre}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="salir2()" slot="end">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div>
+  <ion-item>
+    <ion-label>Cantidad</ion-label>
+    <ion-input [(ngModel)]="compra.cantidad" type="number" value="1" id="cantidad"></ion-input>
+    <ion-button (click)="post()">Guardar</ion-button>
+  </ion-item>
+</div>
+</ion-content>

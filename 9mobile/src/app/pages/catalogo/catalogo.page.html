@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Catalogo</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Regresar"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- fab placed to the top end -->
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="cart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid >
+    <ion-row >
+      <ion-col size="6" *ngFor="let ipeli of ipelis">
+        <ion-card style="height: 250px; width: 150px">
+          <img src="{{ipeli.image}}"  style="width:150px; height:150px;"  >
+          <ion-card-header>
+            <ion-card-title  style="color: #43af35; font-size:17px">{{ipeli.name}}</ion-card-title>
+            <ion-card-subtitle>Precio: {{ipeli.price}}</ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

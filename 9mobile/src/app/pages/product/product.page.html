@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button>
+      </ion-menu-button>
+
+    </ion-buttons>
+    <ion-title align="center">SuperMercados el 9</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+
+  <ion-grid >
+
+      <span *ngFor="let ipeli of icategoria">
+        <ion-card  size="12"  *ngIf="ipeli.id_cliente=='1'" >
+        <ion-row>
+            <ion-col size="7">
+                <ion-col>
+                     <ion-card-subtitle  style="color: #43af35; font-size:17px"  slot="">{{ipeli.id_producto}}</ion-card-subtitle>
+                </ion-col>
+                <ion-col>
+                     <ion-card-subtitle><strong> cantidad:</strong>{{ipeli.cantidad}}</ion-card-subtitle>
+                </ion-col>
+            </ion-col>
+
+        </ion-row>
+    
+        </ion-card>
+      </span>
+
+  </ion-grid>
+
+
+
+</ion-content>
