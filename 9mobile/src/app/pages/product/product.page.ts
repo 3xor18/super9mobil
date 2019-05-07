@@ -12,18 +12,22 @@ import {ICategoria} from "../../model/ICategoria.interface";
 })
 export class ProductPage implements OnInit {
   API_ENDPOINT='http://workshop.test/api';
-  ipelis:IPelis[];
-  icategoria:ICategoria[];
+  ipelis:IPelis[];  icategoria:ICategoria[];
 
-  consult:string=this.productService.filtrado;
+
   constructor(private productService: ProductService,private httpClient:HttpClient,private  categoriaService:CategoriaService) {
-httpClient.get(this.API_ENDPOINT+'/product').subscribe((data:IPelis[])=>{this.ipelis=data});
+   // httpClient.get(this.API_ENDPOINT+'/product').subscribe((data:IPelis[])=>{this.ipelis=data});
 httpClient.get(this.API_ENDPOINT+'/compra').subscribe((data:ICategoria[])=>{this.icategoria=data});
-//httpClient.get(this.API_ENDPOINT+'/product/categoria?page='+this.productService.filtrado).subscribe((data:IPelis[])=>{this.ipelis=data});
+  this.productService.tomar().subscribe((data:IPelis[])=>{this.ipelis=data},(error)=>{console.log('Error')});
   }
 
   ngOnInit() {
   }
+refrescar(){
+ this.productService.tomar().subscribe((data:IPelis[])=>{this.ipelis=data},(error)=>{console.log('Error')});
+
+  }
+
 
 
 }

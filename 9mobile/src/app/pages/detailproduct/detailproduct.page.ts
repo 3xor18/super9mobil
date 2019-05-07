@@ -3,7 +3,9 @@ import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../../services/product.service";
 import {IPelis} from "../../model/IPelis.interface";
 import {ModalInfoPage} from "../modal-info/modal-info.page";
-import {ModalController} from "@ionic/angular";
+import {ModalController, NavController} from "@ionic/angular";
+import {Router} from "@angular/router";
+
 @Component({
   selector: 'app-detailproduct',
   templateUrl: './detailproduct.page.html',
@@ -14,7 +16,7 @@ export class DetailproductPage implements OnInit {
   ipelis:IPelis[];
   consult:string=this.productService.filtrado;
 consulta:string;
-  constructor(private productService: ProductService,private httpClient:HttpClient,private modalCtrl:ModalController) {
+  constructor(private router: Router,private productService: ProductService,private httpClient:HttpClient,private modalCtrl:ModalController) {
     httpClient.get(this.API_ENDPOINT+'/product').subscribe((data:IPelis[])=>{this.ipelis=data});
 //httpClient.get(this.API_ENDPOINT+'/product/categoria?page='+this.productService.filtrado).subscribe((data:IPelis[])=>{this.ipelis=data});
 
@@ -36,5 +38,6 @@ consulta:string;
     await modal.present();
    // const {data}=await modal.onDidDismiss();
     //console.log('Retorno:',data);
+    this.router.navigate(['/product']);
   }
 }

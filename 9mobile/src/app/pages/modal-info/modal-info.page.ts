@@ -5,6 +5,10 @@ import {HttpClient} from "@angular/common/http";
 import {IPelis} from "../../model/IPelis.interface";
 import {ICompra} from "../../model/ICompra.interface";
 import {CompraService} from "../../services/compra.service";
+import {element} from "protractor";
+import {NavController} from "@ionic/angular";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-modal-info',
@@ -18,7 +22,9 @@ export class ModalInfoPage implements OnInit {
 @Input() nombre;
   @Input() id;
   constructor(private modalCtrl:ModalController,private productService: ProductService,private httpClient:HttpClient,
-              private compraService:CompraService) {}
+              private compraService:CompraService,private  nav:NavController,private router: Router) {
+
+  }
 
   ngOnInit() {
   }
@@ -37,6 +43,7 @@ salir1(){
           id:''
         }
     );
+      this.router.navigate(['/product']);
   }
   post(){
       this.compra.id_producto=this.id;
@@ -46,6 +53,7 @@ salir1(){
           console.log(error);
           alert('Ocurrio Un Error!');
       });
-this.salir2();
+     window.location.reload(true);
+     this.salir2();
   }
 }

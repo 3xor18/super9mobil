@@ -11,18 +11,22 @@
 
 <ion-content >
 
-
   <ion-grid >
 
-      <span *ngFor="let ipeli of icategoria">
-        <ion-card  size="12"  *ngIf="ipeli.id_cliente=='1'" >
+      <span *ngFor="let icategoria of icategoria">
+
+          <span *ngFor="let ipeli of ipelis">
+
+        <ion-card  size="12"  *ngIf="icategoria.id_producto==ipeli.product_id" >
+
+<img src="{{ipeli.image}}"  style="width:150px; height:150px;">
         <ion-row>
             <ion-col size="7">
                 <ion-col>
-                     <ion-card-subtitle  style="color: #43af35; font-size:17px"  slot="">{{ipeli.id_producto}}</ion-card-subtitle>
+                     <ion-card-subtitle  style="color: #43af35; font-size:17px">{{ipeli.name}}</ion-card-subtitle>
                 </ion-col>
                 <ion-col>
-                     <ion-card-subtitle><strong> cantidad:</strong>{{ipeli.cantidad}}</ion-card-subtitle>
+                     <ion-card-subtitle><strong> cantidad:</strong>{{icategoria.cantidad}}</ion-card-subtitle>
                 </ion-col>
             </ion-col>
 
@@ -30,7 +34,7 @@
     
         </ion-card>
       </span>
-
+          </span>
   </ion-grid>
 
 
